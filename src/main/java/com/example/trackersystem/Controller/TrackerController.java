@@ -41,8 +41,7 @@ public class TrackerController {
     public ApiResponse changeStatus(@PathVariable int index,@RequestBody Tracker tracker)
     {
         if(trackers.get(index).getStatus().equals("Not done")) {
-            tracker.setStatus("Done");
-            trackers.set(index, tracker);
+            trackers.get(index).setStatus("Done");
         }
         return new ApiResponse("status changed",date.toString());
     }
