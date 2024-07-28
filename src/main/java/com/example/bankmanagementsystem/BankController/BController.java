@@ -51,8 +51,11 @@ public class BController {
     @PutMapping("/withdraw/{index}/{b}")
     public ApiResponse withdrawBank(@PathVariable int index,@PathVariable double b)
     {
+        if(models.get(index).getBalance() > b){
         models.get(index).setBalance(models.get(index).getBalance() - b);
         return new ApiResponse("bank done withdraw",date.toString());
+        }
+        else return new ApiResponse("the balance is not enough",date.toString());
     }
 
 }
